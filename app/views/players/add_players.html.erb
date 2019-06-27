@@ -1,0 +1,10 @@
+<% if params.has_key? "NAME" %>
+   <% 
+        obj = Player.new 
+        obj.team_id = params["ID"]
+        obj.playername = params["NAME"]
+        if obj.save
+            redirect_to "/players/index"
+        end    
+   %>
+<% end %>

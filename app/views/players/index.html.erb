@@ -1,0 +1,115 @@
+<p> THER ARE <%= @game.count %> TEAMS </p>
+
+<table>
+    <thead>
+        <tr> TEAM NO </tr>
+        <tr> TEAM NAME </tr>
+    </thead>
+
+    <tbody>
+       <% @game.each do |game_detail| %>
+           <tr> 
+              <td> <%= game_detail.teamno %> </td>
+              <td> <%= game_detail.teamname %> </td>
+           </tr>
+       <% end %>
+    </tbody>
+
+</table>
+
+
+<br/>
+
+<table>
+    <thead>
+        <tr> TEAM NO </tr>
+        <tr> PLAYER NO </tr>
+    </thead>
+
+    <tbody>
+       <% @team.each do |team_detail| %>
+           <tr>
+               <td>  <%= team_detail.game_id %> </td>
+               <td>  <%= team_detail.playerno %>    </td>
+           </tr>
+       <% end %>
+
+</table>
+
+<br/>
+
+<p> THER ARE <%= @player.count %> PLAYERS </p>
+
+<br/>
+
+<table>
+    <thead>
+        <tr> TEAM ID  </tr>
+        <tr> PLAYER NAME </tr>
+        <tr> ACTION : DELETE </tr>
+        <tr> ACTION : SHOW </tr>
+        <tr> UPDATE : PLAYERNAME </tr>
+    </thead>
+
+    <tbody>
+       <% @player.each do |player_detail| %>
+           <tr>
+               <td>  <%= player_detail.team_id %> </td>
+               <td>  <%= player_detail.playername %>    </td>
+               <td>  <a href = "/players/delete/<%= player_detail.id %>"> DELETE </a> </td>
+               <td>  <a href = "/players/show/<%= player_detail.id %>"> SHOW </a> </td>
+               <td> <input type = "text" name = "/players/show/<%= player_detail.id %>">  </td>
+               <td> <a href = "/players/update/<%= player_detail.id %>">  <button type = "submit" > UPDATE </button> </a>  </td>
+           </tr>
+       <% end %>
+
+</table>
+
+<br/>
+
+<p> ADD THE PLAYER NAME AND TEAM NO </p>
+
+<%= link_to('ADD', {
+    "controller" => "players",
+    "action" => "add_players"
+}) %>
+
+
+
+
+<%
+
+=begin%>
+
+THIS IS JUST A DEMOs
+
+ <%= link_to('ADD', {
+    "controller" => "players",
+    "action" =>"index",
+    "NAME" => "ZOOZOO",
+    "ID" =>2
+})
+
+%> 
+<%
+=end%>
+
+
+<%
+=begin%>
+
+THIS IS GOING TO ADD TEAM_ID AND PLAYER NAME ONCLICKNG THE LINK
+
+ <% if params.has_key?("NAME") %>
+     <% 
+          obj = Player.new
+          obj.team_id = params["ID"]
+          =====> IT IS A GOOD WAY OF USING params["players"]["ID"]
+          obj.playername = params["NAME"]
+          obj.save 
+     %>
+<% end %> 
+<%
+=end
+
+%>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teamno: one
+  playerno: 1
+
+two:
+  teamno: two
+  playerno: 1
